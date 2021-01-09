@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax an Promise</title>
+    <style>
+        .body {
+            margin: auto;
+        }
+        div {
+            border: 1px solid black;
+            background-color: skyblue;
+            padding: 50px;
+            width: 80%;
+            font-size: xx-large;
+            margin-top: 50px;
+        }
+    </style>
+    <script src="../js/http_service.js"></script>
+</head>
+<body>
+    <h1>The Test Services Result</h1>
+    <div id="get_Services"></div>
+    <div id="DELETE_Services"></div>
+    <div id="POST_Services"></div>
+    
+    <script>
+        
+        const getElement = document.querySelector("#get_Services");
+        const getURL = "http://localhost:3000/EmployeePayrollData/1";
+        makePromiseCall("GET",getURL,false)
+            .then(responseText => {
+                getElement.textContent = "Get user data: "+responseText
+            })
+            .catch(error => {
+                getElement.textContent = "Error: "+ JSON.stringify(error) 
+            });
+        
+        const deleteElement = document.querySelector('#DELETE_Services');
+        const deleteURL = "http://localhost:3000/EmployeePayrollData/9";
+        makePromiseCall("DELETE",deleteURL,false)
+            .then(responseText => {
+                deleteElement.textContent = "Deleted data: "+responseText
+            })
+            .catch(error => {
+                deleteElement.textContent = "Error: "+JSON.stringify(error)
+            });
+
+
+        const postElement = document.querySelector('#POST_Services');
+        const postURL = "http://localhost:3000/EmployeePayrollData";
+        const empData = {"name":"HarryRoy","salary":"4567"}
+        makePromiseCall("POST",postURL,false,empData)
+            .then(responseText => {
+                postElement.textContent = "Added data: "+responseText
+            })
+            .catch(error => {
+                postElement.textContent = "Error: "+JSON.stringify(error)
+            });
+    </script>
+    
+</body>
+</html>

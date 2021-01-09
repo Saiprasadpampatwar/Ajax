@@ -42,7 +42,7 @@ makePromiseCall("GET",getURL,true)
     .catch(error => console.log("GET Error Status: "+JSON.stringify(error)));
 
     console.log("Made GET promiseCall at : "+showTime());
-
+/*
 const deleteURL = "http://localhost:3000/EmployeePayrollData/9";
 makePromiseCall("DELETE",deleteURL,false)
     .then(responseText => {
@@ -61,3 +61,4 @@ makePromiseCall("POST",postURL,true,empData)
     .catch(error => console.log("POST Error Status: "+JSON.stringify(error)));
 
     console.log("Made POST promiseCall at : "+showTime());
+*/
